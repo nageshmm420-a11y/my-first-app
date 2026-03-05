@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Field Book Digitizer</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <main class="container">
+      <header>
+        <h1>Field Book to Software Upload Workflow</h1>
+        <p>
+          Step 1 digitizes hard-copy field observations using uploaded photo(s) and
+          the original Excel file. Step 2 unlocks a software-ready upload format
+          after your confirmation.
+        </p>
+      </header>
+
+      <section class="card">
+        <h2>Step 1: Upload field book photos + original Excel</h2>
+        <div class="input-grid">
+          <label>
+            Field book photos
+            <input type="file" id="photos" accept="image/*" multiple />
+          </label>
+          <label>
+            Original Excel file
+            <input type="file" id="excel" accept=".xlsx,.xls" />
+          </label>
+        </div>
+        <button id="processBtn" class="primary">Auto-fill data</button>
+        <p id="step1Status" class="status"></p>
+
+        <div id="resultWrap" class="hidden">
+          <h3>Auto-filled observations</h3>
+          <p class="muted">
+            Data below is pre-filled from the Excel source, with OCR notes extracted
+            from image uploads.
+          </p>
+          <div id="preview"></div>
+          <button id="confirmBtn" class="success">Confirm Step 1 data</button>
+        </div>
+      </section>
+
+      <section id="step2" class="card hidden">
+        <h2>Step 2: Upload in software share format</h2>
+        <p>
+          Step 1 has been confirmed. You can now upload the package that will be
+          shared with your software integration pipeline.
+        </p>
+
+        <div class="input-grid">
+          <label>
+            Software upload package (JSON / CSV)
+            <input type="file" id="softwareFile" accept=".json,.csv" />
+          </label>
+          <label>
+            Download JSON template
+            <button id="downloadTemplate" class="secondary" type="button">
+              Download Template
+            </button>
+          </label>
+        </div>
+
+        <p id="step2Status" class="status"></p>
+        <pre id="softwarePreview" class="preview-box"></pre>
+      </section>
+    </main>
+  </body>
+</html>
