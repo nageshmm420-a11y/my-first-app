@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Field Book Digitizer</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <main class="container">
+      <header>
+        <h1>Field Book to Software Upload Workflow</h1>
+        <p>Upload → Fill → Preview → Convert → Split → Download</p>
+      </header>
+
+      <section class="card">
+        <h2>Step 1: Fill Original Excel from Field Book</h2>
+        <div class="input-grid">
+          <label>
+            Field book photos or PDFs (jpg, jpeg, png, pdf)
+            <input type="file" id="fieldBookFiles" accept=".jpg,.jpeg,.png,.pdf,image/*,application/pdf" multiple />
+          </label>
+          <label>
+            Original Excel file
+            <input type="file" id="originalExcel" accept=".xlsx,.xls" />
+          </label>
+        </div>
+
+        <button id="fillBtn" class="primary">Auto-fill observations</button>
+        <p id="step1Status" class="status"></p>
+      </section>
+
+      <section id="step1PreviewSection" class="card hidden">
+        <h2>Step 1 Preview Data</h2>
+        <p class="muted" id="step1Summary"></p>
+
+        <h3>Detected Project Type(s)</h3>
+        <div id="detectedProjectsPreview"></div>
+
+        <h3>Mapped OCR Columns</h3>
+        <div id="mappedColumnsStep1Preview"></div>
+
+        <h3>Filled Excel Data</h3>
+        <div id="filledPreview"></div>
+
+        <div class="button-row">
+          <button id="downloadFilledExcel" class="success" type="button">Download Filled Excel</button>
+          <button id="continueBtn" class="secondary" type="button">Continue to Software Template Conversion</button>
+        </div>
+      </section>
+
+      <section id="step2Section" class="card hidden">
+        <h2>Step 2: Convert to Software Template and Split</h2>
+        <div class="input-grid">
+          <label>
+            Software Model Sheet
+            <input type="file" id="softwareModel" accept=".xlsx,.xls" />
+          </label>
+        </div>
+
+        <button id="convertBtn" class="primary" type="button">Convert and Split</button>
+        <p id="step2Status" class="status"></p>
+      </section>
+
+      <section id="step2PreviewSection" class="card hidden">
+        <h2>Step 2 Preview Data</h2>
+
+        <h3>Mapped Template Columns</h3>
+        <div id="mappedColumnsStep2Preview"></div>
+
+        <h3>Software Template Data</h3>
+        <div id="softwarePreview"></div>
+
+        <h3>Project Split Summary</h3>
+        <div id="projectSummaryPreview"></div>
+
+        <div class="button-row">
+          <button id="downloadSoftwareTemplate" class="success" type="button">Download Software Template Excel</button>
+          <button id="downloadProjectZip" class="secondary" type="button">Download Project Split Files (ZIP)</button>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

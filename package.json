@@ -1,0 +1,20 @@
+{
+  "name": "field-book-digitizer",
+  "version": "1.0.0",
+  "private": true,
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "multer": "^1.4.5-lts.1",
+    "tesseract.js": "^5.1.1",
+    "xlsx": "^0.18.5",
+    "jszip": "^3.10.1",
+    "pdfjs-dist": "^4.10.38",
+    "canvas": "^2.11.2",
+    "sharp": "^0.33.5"
+  }
+}
